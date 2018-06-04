@@ -1,0 +1,103 @@
+---
+title: ISTC Bootcamp, JavaScript
+author: Zaven Snkhchyan
+date: June 1, 2018
+output:
+ revealjs::revealjs_presentation:
+     theme: black
+     transition: default
+     background_transition: zoom
+     highlight: pygments
+     center: true
+     incremental: true
+---
+
+## What will be covered in the course
+
+> - HTML/CSS basics
+> - Introduction to JavaScript
+> - Applying JavaScript to web pages
+
+## Things we will need
+> - Github Account
+> - Git
+> - Browser
+> - Editor
+
+## Technologies that drive the web (and not only)
+![](./stack.png)
+
+## What is HTML
+
+### HTML stands for Hyper Text Markup Language and provides the structure of the web page
+
+## HyperText
+Hypertext is a text which contains links to other texts
+![](http://www.historygraphicdesign.com/images/001/V02.jpg)
+
+## Markup
+### Markup means to mark something up: annotate.
+
+The content should be annotated for machine to tell what the content is
+```{html}
+<html>
+    <head>
+        <title>Title of my webpage</title>
+    </head>
+    <body>
+    </body>
+</html>
+```
+## Language
+Every markup language is different and has it's own syntax
+
+```{html}
+<html>
+    <head>
+        <title>Title of my webpage</title>
+    </head>
+    <body>
+        <div>
+            <h1> I am a title </h1>
+        </div>
+    </body>
+</html>
+```
+
+## What is CSS
+
+### CSS stands for Cascading Style Sheets and is used to describe the presentation of the page.
+
+```{}
+body {
+    background-color: #cecece;
+    font-size: 16px;
+}
+```
+
+# What is JavaScript ?
+
+## Origins.
+
+JavaScript was written by Branden Eich in 1995, to provide interactivity to webpages.
+It is a high-level, interpreted programming language, initially designed for client-side scripting.
+
+## Why is it so popular ?
+
+```{r fig.width=8, fig.height=8, echo=FALSE}
+library(png)
+library(grid)
+img <- readPNG("./stack_overflow_survey.png")
+ grid.raster(img)
+```
+
+##
+
+* Client-side scripting
+* Back-end development (NodeJS)
+* Desktop application development
+* Mobile development
+* Robot manipulation (NodeBot)
+
+## Q: Why JS is designed to be an interpreted language
+
