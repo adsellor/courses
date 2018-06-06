@@ -235,24 +235,9 @@ Braces can be used to group number of statements.
 
 ### In JavaScript we have three loops, `while` `do` and `for` loops.
 
-```{js}
-let number = 0;
-while (number < 10) {
-    console.log(number)
-    number = number + 1
-}
-
-do {
-   number = number + 1
-} while (number = -1);
-```
 
 ## For loop
 
 ### Many loops have similar patterns as `while` loops. First counter is created, then comes a while loop that checks if the counter has reached needed value, and at the end counter is updated.
 So, for the sake of simplicity JS and other languages provide simpler `for` loop.
-```{js}
-for (let number = 0; number < 10; number = number + 1) {
-    console.log(number)
-}
 
