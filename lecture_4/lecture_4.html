@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="dcterms.date" content="2018-06-06" />
-  <title>Introduction to JavaScript, Functions</title>
+  <meta name="dcterms.date" content="2018-06-08" />
+  <title>Arrays and objects</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -1832,157 +1832,134 @@ document.getElementsByTagName('head')[0].appendChild(style);
     <div class="slides">
 
 <section>
-    <h1 class="title">Introduction to JavaScript, Functions</h1>
-    <h3 class="date">June 6, 2018</h3>
+    <h1 class="title">Arrays and objects</h1>
+    <h3 class="date">June 8, 2018</h3>
 </section>
 
-<section id="functions" class="slide level2">
-<h2>Functions</h2>
-<h3 id="function-is-a-binding-where-the-value-is-a-function">Function is a binding where the value is a function</h3>
-<p>Functions are created with <em>function</em> keyword.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">const</span> greet <span class="op">=</span> <span class="kw">function</span>(name) <span class="op">{</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">    <span class="va">console</span>.<span class="at">log</span>(name)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="op">}</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="at">greet</span>(<span class="st">&quot;Artavazd&quot;</span>)<span class="op">;</span></a></code></pre></div>
-<p>Functions have <em>parameters</em> and <em>body</em>. A <em>return</em> statement in the function determines a <em>value</em> that function returns. Functions that don’t have <em>return</em> will return <em>undefined</em></p>
-</section>
-<section id="write-a-function-power-where-user-can-pass-base-and-exponent-as-arguments-and-get-result." class="slide level2">
-<h2>Write a function <code>power</code>, where user can pass <code>base</code> and <code>exponent</code> as arguments and get result.</h2>
-<h3 id="for-example-power5-2-returns-25.">For example: power(5, 2) returns 25.</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" data-line-number="1">cosnt power <span class="op">=</span> <span class="kw">function</span>(base<span class="op">,</span> exponent) <span class="op">{</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">    <span class="kw">let</span> result<span class="op">;</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="cf">for</span>(.....) <span class="op">{</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">        ....</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">    <span class="op">}</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">    <span class="cf">return</span> result<span class="op">;</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="op">}</span></a></code></pre></div>
-</section>
-<section id="scopes" class="slide level2">
-<h2>Scopes</h2>
-<h3 id="bindings-have-scopes-part-of-the-program-where-the-bindings-are-visible.">Bindings have scopes: part of the program where the bindings are visible.</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">const</span> multiply <span class="op">=</span> <span class="kw">function</span> (x) <span class="op">{</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">    <span class="kw">let</span> y <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">    <span class="va">console</span>.<span class="at">log</span>(y) <span class="co">// 10</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">    <span class="cf">return</span> x <span class="op">*</span> <span class="dv">10</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="op">}</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="va">console</span>.<span class="at">log</span>(y) <span class="co">// not defined</span></a></code></pre></div>
-<p>Here the <code>y</code> is <code>local</code> to function <code>multiply</code> and we can’t access it anywhere outside of the function’s <code>scope</code></p>
-</section>
-<section id="let-and-const" class="slide level2">
-<h2>Let and Const</h2>
-<h3 id="bindings-declared-with-let-and-const-are-local-to-the-block">Bindings declared with <em>let</em> and <em>const</em> are local to the <em>block</em></h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">let</span> y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">let</span> n <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="cf">if</span>(<span class="kw">true</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="va">console</span>.<span class="at">log</span>(n)</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">  <span class="kw">var</span> x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">  <span class="kw">let</span> y <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">  <span class="va">console</span>.<span class="at">log</span>(y)</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="op">}</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="va">console</span>.<span class="at">log</span>(y<span class="op">,</span> <span class="st">'y'</span>)</a></code></pre></div>
-</section>
-<section id="declaration" class="slide level2">
-<h2>Declaration</h2>
-<h3 id="a-shorter-way-to-create-a-function-binding">A shorter way to create a function binding</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="at">greet</span>(<span class="st">&quot;Artavazd&quot;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">function</span> <span class="at">greet</span>(name) <span class="op">{</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">    <span class="va">console</span>.<span class="at">log</span>(name)</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="op">}</span></a></code></pre></div>
-<p>This is called a function declaration</p>
-</section>
-<section id="arrow-function" class="slide level2">
-<h2>Arrow function</h2>
-<h3 id="in-es2015-the-new-way-of-declaring-functions-was-introduced.">In ES2015 the new way of declaring functions was introduced.</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">const</span> greet <span class="op">=</span> (name) <span class="op">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">    <span class="cf">return</span> <span class="va">console</span>.<span class="at">log</span>(name)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="op">}</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">//same as</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw">const</span> greet <span class="op">=</span> name <span class="op">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(name)</a></code></pre></div>
-</section>
-<section id="call-stack" class="slide level2">
-<h2>Call Stack</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">const</span> exclaim <span class="op">=</span> (word) <span class="op">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">    <span class="kw">let</span> mark <span class="op">=</span> <span class="st">' !'</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">    <span class="va">console</span>.<span class="at">log</span>(<span class="va">word</span>.<span class="at">toUpperCase</span> <span class="op">+</span> mark)</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="op">}</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="at">exclaim</span>(<span class="st">&quot;Hello&quot;</span>)</a></code></pre></div>
-<h3 id="whats-happening">What’s happening ?</h3>
-<h4 id="the-computer-needs-to-remember-the-context-from-which-the-call-happened.">The computer needs to remember the context from which the call happened.</h4>
-<blockquote>
-<p>The place where computer stores this context is called <strong>call stack</strong></p>
-</blockquote>
-</section>
-<section id="arguments" class="slide level2">
-<h2>Arguments</h2>
-<p>JavaScript doesn’t complain if you pass wrong number of arguments.</p>
-<p>Extra arguments will be ignored, and missing arguments will be assigned value of <strong>undefined</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">function</span> <span class="at">square</span>(x) <span class="op">{</span> <span class="cf">return</span> x <span class="op">*</span> x <span class="op">}</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="at">square</span>(<span class="dv">9</span><span class="op">,</span> <span class="st">'something'</span><span class="op">,</span> <span class="dv">3</span>) <span class="co">// returns 81</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">// Downside</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw">function</span> <span class="at">add</span>(x<span class="op">,</span> y) <span class="op">{</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">    <span class="cf">return</span> x <span class="op">+</span> y</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="op">}</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="at">add</span>(<span class="dv">3</span>) <span class="co">// returns NaN</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">// You can pass default value if needed</span></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="kw">function</span> <span class="at">add</span>(x<span class="op">,</span> y <span class="op">=</span> <span class="dv">1</span>) <span class="op">{</span> <span class="cf">return</span> x <span class="op">+</span> y <span class="op">}</span></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="at">add</span>(<span class="dv">2</span>) <span class="co">// returns 3</span></a></code></pre></div>
-</section>
-<section id="closures" class="slide level2">
-<h2>Closures</h2>
-<h3 id="what-happens-to-local-bindings-when-the-function-call-that-created-them-is-no-longer-active">What happens to local bindings when the function call that created them is no longer active?</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">function</span> <span class="at">value</span>(x) <span class="op">{</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">    <span class="kw">let</span> scoped <span class="op">=</span> n<span class="op">;</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">    <span class="cf">return</span> () <span class="op">=&gt;</span> scoped</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="op">}</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="kw">let</span> newValue1 <span class="op">=</span> <span class="at">value</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="kw">let</span> newValue2 <span class="op">=</span> <span class="at">value</span>(<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="at">newValue1</span>()</a>
-<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="at">newValue2</span>()</a>
-<a class="sourceLine" id="cb9-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">// What  will happen ?</span></a></code></pre></div>
-<p><strong><em>Note, in function <code>value</code> we return a new <code>function</code></em></strong></p>
-</section>
-<section id="write-a-function-multiply-which-will-take-argument-factor-return-another-function-taking-argument-number-and-multiplying-it-by-factor." class="slide level2">
-<h2>Write a function <code>multiply</code> which will take argument factor, return another <code>function</code> taking argument <code>number</code> and multiplying it by factor.</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">function</span> <span class="at">multiply</span>(factor) <span class="op">{</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">    <span class="cf">return</span> <span class="co">// function taking argument number and multiplying it by factor</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="op">}</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="kw">const</span> twice <span class="op">=</span> <span class="at">multiply</span>(<span class="dv">2</span>) <span class="co">// type of twice ?</span></a>
-<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="at">twice</span>(<span class="dv">10</span>) <span class="co">// should return 20</span></a></code></pre></div>
-</section>
-<section id="recursion" class="slide level2">
-<h2>Recursion</h2>
-<h3 id="functions-can-also-call-themselves.-such-function-is-called-recursive.">Functions can also call themselves. Such function is called <em>recursive</em>.</h3>
-<p>Using recursion we can write functions in a different style. For example the <em>power</em> function can be rewritten using recursion.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">function</span> <span class="at">power</span>(base<span class="op">,</span> exponent) <span class="op">{</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">    <span class="cf">if</span>(exponent <span class="op">==</span> <span class="dv">0</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">        <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">    <span class="op">}</span></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">    <span class="cf">else</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">        <span class="cf">return</span> base <span class="op">*</span> <span class="at">power</span>(base<span class="op">,</span> exponent <span class="op">-</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">    <span class="op">}</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="op">}</span></a></code></pre></div>
-</section>
-<section id="write-calculator-functions." class="slide level2">
-<h2>Write calculator functions.</h2>
+<section id="recap-primitive-data-types" class="slide level2">
+<h2>Recap: primitive data types</h2>
+<h3 id="numbers-booleans-and-strings-are-primitive-data-types.">Numbers, booleans and strings are primitive data types.</h3>
 <ul>
-<li><code>squareNumber</code> which takes on argument as a number and returns it’s square. E.g squareNumber(5) returns 25.</li>
-<li><code>half</code> which takes one argument and divides it by 2.</li>
-<li><code>percent</code> which takes two arguments and returns what percent the first number represents of the second number. E.g percent(10, 100) returns 10 is 10% of 100.</li>
-<li></li>
+<li class="fragment">Numbers have numeric values</li>
+<li class="fragment">Booleans have two values: true and false</li>
+<li class="fragment">Strings are text, wrapped in <code>&quot;&quot;</code> and <code>''</code>.</li>
 </ul>
+<h3 id="there-are-also-two-special-primitive-data-types-null-and-undefined.">There are also two special primitive data types, <code>null</code> and <code>undefined</code>.</h3>
 </section>
+<section id="recap-bindings." class="slide level2">
+<h2>Recap: Bindings.</h2>
+<ul>
+<li class="fragment">Bindings are defined with <em>let</em>, <em>const</em> and <em>var</em></li>
+<li class="fragment">Bindings defined with <em>const</em> always point to the same value</li>
+<li class="fragment"><em>let</em> was introduced in ES-2015 and replaced <em>var</em></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">const</span> x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">let</span> y <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">y <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">let</span> n <span class="op">=</span> <span class="st">&quot;Something&quot;</span><span class="op">,</span> q <span class="op">=</span> <span class="st">&quot;Another thing&quot;</span></a></code></pre></div>
+</section>
+<section id="recap-functions." class="slide level2">
+<h2>Recap: Functions.</h2>
+<ul>
+<li class="fragment">Functions are “subprograms” that can be called by code.</li>
+<li class="fragment">Function is composed from number of statements</li>
+<li class="fragment">Functions can have parameters and the function will <em>return</em> a value</li>
+<li class="fragment">Functions can return a function</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">function</span> <span class="at">square</span>(x) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">    <span class="cf">return</span> x <span class="op">*</span> x</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="op">}</span></a></code></pre></div>
+</section>
+<section><section id="numbers-booleans-and-strings-are-the-foundation-upon-which-the-data-structures-are-built-on." class="title-slide slide level1"><h1>Numbers, booleans and strings are the foundation upon which the data structures are built on.</h1></section><section id="to-work-with-data-wee-need-a-way-to-represent-it-in-our-machines-memory.-lets-say-we-want-to-represent-collection-of-words-yerevan-gyumri-vanadzor-spitak-ashtarak." class="slide level2">
+<h2>To work with data wee need a way to represent it in our machine’s memory. Let’s say we want to represent collection of words Yerevan, Gyumri, Vanadzor, Spitak, Ashtarak.</h2>
+<h3 id="javascript-provides-a-way-to-store-not-a-single-but-a-sequence-of-values.-its-called-array.">JavaScript provides a way to store not a single but a sequence of values. It’s called <code>array</code>.</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">const</span> cities <span class="op">=</span> [<span class="st">&quot;Yerevan&quot;</span><span class="op">,</span> <span class="st">&quot;Gyumri&quot;</span><span class="op">,</span> <span class="st">&quot;Vanadzor&quot;</span><span class="op">,</span> <span class="st">&quot;Spitak&quot;</span><span class="op">,</span> <span class="st">&quot;Ashtarak&quot;</span>]</a></code></pre></div>
+<h3 id="every-element-in-an-array-is-given-an-index.-indexation-starts-from-0-not-1">Every element in an array is given an index. Indexation starts from <code>0</code>, not <code>1</code></h3>
+</section><section id="properties" class="slide level2">
+<h2>Properties</h2>
+<blockquote>
+<p>There are expressions which access a <strong>property</strong> of some value. Properties have names and values.</p>
+</blockquote>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">let</span> array <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="va">array</span>.<span class="at">length</span> <span class="co">// length is a property of Array.</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">let</span> string1 <span class="op">=</span> <span class="st">&quot;Length&quot;</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="va">string1</span>.<span class="at">length</span></a></code></pre></div>
+<h3 id="we-can-access-properties-with-a-dot-and-with-square-brackets">We can access properties with a <code>dot</code> and with <code>square brackets</code></h3>
+</section><section id="accessing-properties-with-dot" class="slide level2">
+<h2>Accessing properties with ‘dot’</h2>
+<blockquote>
+<p>When accessing the property with a dot, the part after it should be a valid binding name. So we are <code>naming</code> the property.</p>
+</blockquote>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">const</span> cities <span class="op">=</span> [<span class="st">&quot;Yerevan&quot;</span><span class="op">,</span> <span class="st">&quot;Ashtarak&quot;</span><span class="op">,</span> <span class="st">&quot;Vanadzor&quot;</span>]</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="va">console</span>.<span class="at">log</span>(<span class="va">cities</span>.<span class="at">length</span>) <span class="co">// -&gt; 3</span></a></code></pre></div>
+</section><section id="accessing-properties-with-bracket" class="slide level2">
+<h2>Accessing properties with bracket</h2>
+<blockquote>
+<p>When accessing the property with brackets, the expression between them is <code>evaluated</code> to get the property name.</p>
+</blockquote>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">const</span> cities <span class="op">=</span> [<span class="st">&quot;Yerevan&quot;</span><span class="op">,</span> <span class="st">&quot;Ashtarak&quot;</span><span class="op">,</span> <span class="st">&quot;Vanadzor&quot;</span>]</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="va">console</span>.<span class="at">log</span>(cities[<span class="st">&quot;length&quot;</span>]) <span class="co">// -&gt; 3</span></a></code></pre></div>
+</section><section id="methods." class="slide level2">
+<h2>Methods.</h2>
+<blockquote>
+<p>Methods are the <strong>properties</strong> which hold function values</p>
+</blockquote>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;JS is fun&quot;</span>)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">const</span> city <span class="op">=</span> <span class="st">&quot;Yerevan&quot;</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">const</span> upperCaseCity <span class="op">=</span> <span class="va">city</span>.<span class="at">toUpperCase</span>()</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="va">console</span>.<span class="at">log</span>(upperCaseCity) <span class="co">// -&gt; &quot;YEREVAN&quot;</span></a></code></pre></div>
+<p><strong>toUpperCase</strong> is a <strong>method</strong> on string. It returns a copy of the original string, with all letters converted to uppercase</p>
+</section><section id="objects-allow-us-to-group-other-values." class="slide level2">
+<h2>Objects allow us to group other values.</h2>
+<h3 id="values-of-the-type-object-are-arbitrary-collection-of-properties.">Values of the type <em>object</em> are arbitrary collection of properties.</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">let</span> work <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">    <span class="dt">developer</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">    <span class="dt">tech_stack</span><span class="op">:</span> [js<span class="op">,</span> python<span class="op">,</span> rust]<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">    <span class="dt">position</span><span class="op">:</span> <span class="st">&quot;Senior&quot;</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="op">}</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="va">console</span>.<span class="at">log</span>(<span class="va">work</span>.<span class="at">developer</span>) <span class="co">// true</span></a></code></pre></div>
+</section><section id="section" class="slide level2">
+<h2></h2>
+<h3 id="if-we-try-to-access-a-value-which-does-not-exist-the-undefined-value-will-be-produced.">If we try to access a value which does not exist, the undefined value will be produced.</h3>
+<h3 id="we-can-assign-a-value-to-a-property-by-using-the-operator.">We can assign a value to a property by using the = operator.</h3>
+<h4 id="this-will-replace-the-propertys-value-if-it-already-existed-or-create-a-new-property-on-the-object-if-it-didnt.">This will replace the property’s value if it already existed or create a new property on the object if it didn’t.</h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">let</span> work <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">    <span class="dt">developer</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">    <span class="dt">tech_stack</span><span class="op">:</span> [js<span class="op">,</span> python<span class="op">,</span> rust]<span class="op">,</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">    <span class="dt">position</span><span class="op">:</span> <span class="st">&quot;Senior&quot;</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="op">}</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="va">console</span>.<span class="at">log</span>(<span class="va">work</span>.<span class="at">position</span>) <span class="co">// -&gt; Senior</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="va">console</span>.<span class="at">log</span>(<span class="va">work</span>.<span class="at">salary</span>) <span class="co">// -&gt; undefined</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="va">work</span>.<span class="at">salary</span> <span class="op">=</span> <span class="dv">1000000000000000</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="va">console</span>.<span class="at">log</span>(<span class="va">work</span>.<span class="at">salary</span>) <span class="co">// -&gt; 1000000000000000</span></a></code></pre></div>
+</section><section id="object-operators" class="slide level2">
+<h2>Object operators</h2>
+<p>We can use the <code>delete</code> operator to delete remove a property from the object.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">const</span> obj <span class="op">=</span> <span class="op">{</span><span class="dt">first</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">second</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="va">conosle</span>.<span class="at">log</span>(<span class="va">obj</span>.<span class="at">first</span>) <span class="co">// -&gt; 1</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="kw">delete</span> <span class="va">obj</span>.<span class="at">first</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="va">console</span>.<span class="at">log</span>(<span class="va">obj</span>.<span class="at">first</span>) <span class="co">// -&gt; undefined</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;first&quot;</span> <span class="kw">in</span> obj ) <span class="co">// -&gt; false</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;second&quot;</span> <span class="kw">in</span> obj) <span class="co">// -&gt; true</span></a></code></pre></div>
+<blockquote>
+<p><strong><em>in</em></strong> is a binary operator, that indicates weather the given object has the property or not.</p>
+</blockquote>
+</section><section id="arrays-are-objects-too" class="slide level2">
+<h2>ARRAYS ARE OBJECTS TOO</h2>
+<blockquote>
+<p>Arrays are objects, which are specialized for storing sequences of data.</p>
+</blockquote>
+</section></section>
+<section><section id="section-1" class="title-slide slide level1"><h1></h1></section><section id="write-a-function-which-will-take-an-array-as-argument-and-for-each-element-log.-this-is-1st-this-is-2nd-this-is-3rd-etc." class="slide level2">
+<h2>Write a function, which will take an <em>array</em> as argument, and for each element log. “This is 1st”, “This is 2nd”, “This is 3rd” etc.</h2>
+</section></section>
     </div>
   </div>
 

@@ -183,3 +183,10 @@ function power(base, exponent) {
     }
 }
 ```
+
+
+## Write calculator functions.
+
+> - `squareNumber` which takes on argument as a number and returns it's square. E.g squareNumber(5) returns 25.
+> - `half` which takes one argument and divides it by 2.
+> - `percent` which takes two arguments and returns what percent the first number represents of the second number. E.g percent(10, 100) returns 10 is 10% of 100.
