@@ -1,0 +1,76 @@
+---
+title: Higher Order Functions
+date: June 14, 2018
+output:
+    revealjs::revealjs_presentation:
+        theme: black
+        transition: slide
+        center: false
+        incremental: true
+        slide_level: 1
+        self_contained: false
+        reveal_plugins: ["zoom"]
+---
+
+# Complexity
+#### So far we have learned how to write loops, simple functions, use arrays and objects.
+#### But we didn't pay attention how costly the program is.
+#### Big programs always include complexity, which in turns confuses programmers.
+
+# Abstraction
+> Abstraction is the concept of representing piece of code without explicitly stating the details
+
+```javascript
+let result = 0; count = 1;
+while(count < 10) {
+    result += count;
+    count += 1
+}
+console.log(result)
+
+// abstraction
+console.log(sum(range(1, 10)))
+```
+
+#
+## Here is what for loop looks like
+
+### It is common for a program to do something a given number of times. We can write a `for` loop for that.
+
+```javascript
+for (let i=0; i<10; i++){
+    console.log(i)
+}
+```
+
+# How can we abstract this ?
+
+<iframe height="500px" width="100%" src="https://repl.it/repls/FocusedImaginarySymbols?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+# {data-background="https://media.giphy.com/media/3o7WIPku0tmvhunqwg/giphy.gif"}
+
+# Higher-order Functions
+
+> Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions
+
+### Higher-order functions allow us to abstract over actions, not just values.
+
+#
+## We can have functions that create new functions.
+
+<iframe height="500px" width="100%" src="https://repl.it/repls/HungryFilthyCustomer?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+#
+## We can have functions that change other functions
+
+<iframe height="500px" width="100%" src="https://repl.it/repls/ShyQuestionablePup?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+#
+
+## New type of control flow
+
+Write a `doOver` function where we can pass two arguments `times` and `body`. `times` will indicate how many times we want the loop to iterate, `body` will be a function, which gets called every time loop iterates.
+
+<iframe height="500px" width="100%" src="https://repl.it/repls/LivelyNoisyDecimal?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+# Working with Data Sets
