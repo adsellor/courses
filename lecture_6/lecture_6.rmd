@@ -1,0 +1,151 @@
+---
+title: Objects in depth
+date: June 15, 2018
+output:
+    revealjs::revealjs_presentation:
+        theme: black
+        transition: slide
+        center: false
+        incremental: true
+        slide_level: 1
+        self_contained: false
+        reveal_plugins: ["zoom"]
+---
+
+
+# OOP
+
+## Object Oriented Programming has shaped the design of JavaScript.
+
+* Divide a program into smaller parts, individual small programs, which are responsible for managing their own state.
+
+* Parts of programs interact with each other through `interfaces`: Group of functions or bindings that provide functionality.
+
+* Those smaller parts are created using objects. Their interface has methods and properties. Properties can be `public` and `private`
+
+# JavaScript does not provide a way to distinguish between these two. (Not yet https://github.com/tc39/proposal-private-methods)
+
+## However, we can still use this idea.
+
+> Separating "interface" from the core implementation is called `encapsulation`
+
+# Recap: Methods {data-background="https://www.rspb.org.uk/globalassets/images/wildlife/birds/mallard/1031584-mallard.jpg"}
+
+> Methods are just properties which hold value of a function.
+
+Extra: Duck Typing (https://en.wikipedia.org/wiki/Duck_typing)
+
+<iframe height="400px" width="100%" src="https://repl.it/repls/AridGrossCompilerbug?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+
+# This
+When a function is called as a method - the `this` binding in object's body points at the object it was called on.
+
+<iframe height="400px" width="100%" src="https://repl.it/repls/MeaslyFullAutoexec?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+We can change content of `this` by using `function.call` parameter
+
+# Every function has it's own `this` binding.
+
+## Except for functions created with fat arrows.
+
+
+# Prototypes {data-background="https://media.giphy.com/media/Lny6Rw04nsOOc/giphy.gif"}
+
+# Pulling properties from the air
+
+<iframe height="400px" width="100%" src="https://repl.it/repls/LegitimateDarkorangeIntranet?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+Objects, besides own properties have also a `prototype`
+
+# What is a prototype
+
+> Prototype is another object, that "stores additional properties".
+
+Essentially, when we call nonexistent property, the prototype will be searched for having one, then prototype's prototype will be searched, and so on.
+
+What was the prototype of our empty object ?
+
+> Object.prototype
+
+# Creating own object with a specific prototype
+
+```javascript
+let protoDuck =  {
+    speak(quack) {
+        console.log(`The ${this.type}  duck quacks ${quack})
+    }
+}
+
+let smallerDuck = Object.create(protoDuck)
+smallerDuck.type = "small"
+smallerDuck.speak("Hey there")
+```
+
+# Classes
+
+> In OO design class defines shape of a type of object - What method and properties it contains. Such objects are `instances` of the class
+
+`Prototypes` are somewhat informal implementation of classes.
+
+To create in instance in JavaScript, we need an object which derives from the necessary prototype, at the same time be sure that it has properties that instances of this class are supposed to have. This can be done by `constructor` function.
+
+# Classes
+
+Here is an example of constructor
+<iframe height="400px" width="100%" src="https://repl.it/repls/GlisteningJuniorDatum?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+# Classes cont.
+Constructors (all functions, in fact) automatically get a property named prototype, which by default holds an empty object that derives from Object.prototype. We can overwrite it or add new properties
+
+# Class ES2015
+
+> JavaScript classes are constructor functions with a prototype property. In ES2015 new way of writing classes was introduced
+
+```javascript
+class Duck {
+    constructor(type) {
+        this.type = type
+    }
+    speak(quack) {
+        console.log(`${this.type} duck quacks ${quack}`)
+    }
+}
+
+let whiteDuck = new Duck('white')
+let otherDuck = new Duck('other')
+```
+Class declaration allows only methods as properties to be added to prototype.
+
+# Overriding properties
+
+We can also override default prototype properties. This  can be useful if we want the child to have a specific different properties than parent.
+For example, global built-in objects, such as `Array` and `Object` both have the same ancestor prototype - Object.prototype, however, their `toString` method is different.
+
+# Map (not array.map)
+
+### Sometimes we want to associate some values with other values. Like mapping names to ages or brands to products. We can use object for this.
+
+```javascript
+let products = {
+    Mercedes: 'car',
+    Samsung: 'phone',
+    Apple: 'computer'
+}
+
+console.log(`Mercedes produces ${products["Mercedes"]}`)
+
+"toString" in products ???
+```
+
+# Using plain objects as maps is not  safe. How can we avoid this problem?
+
+* Creating object with no prototype by passing `null` to Object.create
+* Use JavaScript `Map`
+
+```javascript
+let newMap = new Map()
+newMap.set(Hello, 8)
+```
+
+# Polymorphism

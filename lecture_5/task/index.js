@@ -60,16 +60,30 @@ const myArr = [
 // 1. Write a `filter` function which filters out the items which don't pass a test
 
 // `array` is an array, `test` is a function
+//
+
+
 function filter(array, test) {
     let passed = []
     // with for...of we can iterate through an array (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
-    for(let item of array) {
-        //Your code goes here
+    //for(let i = 0; i < array.length; i++) {
+        //const arrayElement = array[i]
+        //let new_array = passed
+        //if(test(arrayElement)) {
+            //new_arary = new_array.push(arrayElement)
+        //}
+    //}
+    for(let arrayElement of array) {
+        if(test(arrayElement)){
+            passed.push(arrayElement)
+        }
     }
     return passed
 }
 
-console.log(filter(myArr, n => n.gender == "male")) // should return an array with three objects where property `gender` has the value of `"male"`
+//console.log(filter(myArr, function(n) {
+    //return n.gender == `male`
+//}), 'function')
 
 // Native .filter (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 
@@ -78,10 +92,12 @@ console.log(filter(myArr, n => n.gender == "male")) // should return an array wi
 
 function map(array, transform) {
     let mapped = []
-    // Your code goes here
+    for(let element of array) {
+        mapped.push(transform(element))
+    }
     return mapped
 }
 
-console.log(map(myArr, i => i.email)) // Should return a new  array of the same length as original array containing only emails
+//console.log(map(myArr, i => i.id)) // Should return a new  array of the same length as original array containing only emails
 
 //Native Array.map(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
