@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title> My dom example </title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <p>I am a paragraph <button>Hello</button></p>
+        <script>
+            let paragraph = document.querySelector("p")
+            paragraph.addEventListener("click", () => console.log("paragraph clicked"))
+            let button = document.querySelector("button")
+            button.addEventListener("click", function(event) {
+                console.log("button clicked")
+                event.stopPropagation()
+            })
+        </script>
+    </body>
+</html>

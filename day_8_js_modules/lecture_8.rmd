@@ -1,0 +1,100 @@
+---
+title: Modules
+date: June 15, 2018
+output:
+    revealjs::revealjs_presentation:
+        theme: beige
+        transition: concave
+        center: true
+        incremental: true
+        slide_level: 1
+        self_contained: false
+        reveal_plugins: ["zoom"]
+---
+
+# Modules
+
+> A module is a piece of program that specifies which other pieces it relies on and which functionality it provides for other modules to use
+
+# It's like a Lego {data-background="http://www.totalgeekdom.com/wp-content/uploads/2015/07/Micro-Lego-Computer-Bricks1.jpg"}
+
+# See {data-background="https://technabob.com/blog/wp-content/uploads/2015/07/micro_lego_computer_by_mike_schropp_10.jpg"}
+
+# The relations between modules are called `dependencies`
+
+# Packages
+
+> A package is a chunk of code that can be distributed.
+
+# We need a place to store this packages.
+
+### Enter NPM
+
+### 700 Thousands of Lego pieces.
+
+# Our own modules
+
+> Until 2015 JS had no build in module system.
+So people improvised
+
+```javascript
+const firstName = function() {
+  const names = ["Julia", "Artash", "Saqo", "Babken"];
+  return {
+    name(number) { return names[number]; },
+    number(name) { return names.indexOf(name); }
+  };
+}();
+
+console.log(firstName.name(firstName.number("Saqo")));
+```
+
+***fortunately this method is obsolete now***
+
+# CommonJS
+
+Main part of the CommonJs is a function called `require`
+
+```js
+// module.js
+const ordinal = require("ordinal");
+const {days, months} = require("date-names");
+
+exports.formatDate = function(date, format) {
+    // DO something
+  };
+
+// main.js
+
+const {formatDate} = require("./format-date");
+
+```
+
+# Here is how we define require function
+
+```js
+require.cache = Object.create(null);
+
+function require(name) {
+ if(!(name in require.cache)) {
+  let code = read(name)
+  let module = {exports: { }}
+  require.cache[name] = module
+  let wrapper = Function('require, exports, module', code)
+  wrapper(require, module.exports, module)
+ }
+ return require.cache[name].exports
+}
+```
+
+# ES Modules
+
+```js
+import ordinal from 'ordinal'
+import {days, months} from 'date-names'
+
+
+export function formatDate(date, format) {
+    // Do something
+}
+```

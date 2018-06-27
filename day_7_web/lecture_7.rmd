@@ -1,0 +1,260 @@
+---
+title: Web
+date: June 15, 2018
+output:
+    revealjs::revealjs_presentation:
+        theme: black
+        transition: concave
+        center: false
+        incremental: true
+        slide_level: 1
+        self_contained: false
+        reveal_plugins: ["zoom"]
+---
+
+# Browsers
+
+### Browsers are the reason we have JavaScript today.
+
+The ideological foundation of the web is it's being decentralized. Different browser companies have added different functionalities. This has both pros and cons.
+
+# The Internet
+
+## Internet is one of the most amazing technologies that we have. It's truly astonishing what can be done by connecting computers with cables.
+
+> Essentially, it's just sending sequences of bits to each other, and making other computers to understand what these sequences represent. But how to make them to do so ?
+
+# Meet Protocols
+
+> `Network Protocol` sets the style of communication between computers.
+
+There are bunch of protocols that we use daily. They are used to send and get emails, share files, control other computer in a network and so on. We will cover them more as we move on.
+
+# The Web
+
+> The World Wide Web (not to be confused with the Internet as a whole) is a set of protocols and formats that allow us to visit web pages in a browser
+
+Each document on the web has a name: URL (`Uniform Resource Locator` ).
+
+```
+   http://grdon.solutions/grdon.html
+protocol |     server    | path to file
+```
+
+# IP
+
+#### Machines that connect to the internet get an IP address, which is a number that's used by other computers to communicate with us.
+
+However accessing a computer with IP address doesn't look nice. That's why we use `domain names`
+
+```
+216.58.206.206 vs google.com
+```
+
+`google.com` points to the mentioned IP address in the web.
+
+# HTML
+
+> HTML ( Hypertext Markup Language) is the standard format used for web pages.
+
+As any markup language, it has a content wrapped in `tags` that structure the content.
+
+```html
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title> My Page </title>
+    </head>
+    <body>
+        <h1> Hello to my home page </h1>
+        <p> This is a paragraph </p>
+        <a href="grdon.solutions"> My other website </a>
+    </body>
+</html>
+```
+
+# Hello from JavaScript
+
+We can also include JavaScript in our HTML page with `<script>` tag.
+
+```html
+<p> Here comes prompt </p>
+<script> prompt("I told you so") </script>
+```
+
+Of course, including large chunks of JavaScript in such manner is impractical. That's why we can give a link to .js inside a script tag, with `src` attribute.
+
+```html
+<script src="./prompt.js"></script>
+```
+
+# Browsers
+
+### So what happens when the browser reads the .html file ?
+
+>The browser builds up a model of the document’s structure and uses this model to draw the page on the screen.
+
+# Document Structure
+
+### We can imagine the document as nested boxes.
+
+```html
+<html>
+    <head>
+        <title> My page </title>
+    </head>
+    <body>
+       <h1> Hello </h1>
+       <p> My Paragraph </p>
+    </body>
+</html>
+```
+
+# DOM
+
+> The data structure that browsers use to represent the .html document has similar shape.  For each box, there is an object, which we can interact with. This representation is called the Document Object Model, or DOM.
+
+There is a global `document` binding which allows us to interact with those objects
+
+# Tree
+
+> We can say that our DOM is a big tree. It has a root, nodes, each node may refer to other node, it has children and so on
+
+Here we can see the root of our document with `document.documentElement`
+Each leaf of the tree is called `node`
+
+#
+<img src='~/Desktop/proxy.duckduckgo.com.htm'/>
+
+Each DOM node object has a `nodeType` property, which contains a `number` that identifies the type of that node
+
+# Keep in mind
+
+## DOM was not designed for JavaScript. It is a language neutral interface.
+
+# Other DOM properties
+
+* `parentNode` - get the element containing the node
+* `childNodes` - access to children of the node
+* `firstChild` - get the first children of the node
+* `lastChild` - same as `firstChild`, only for last children
+* `previousSibling` - get the previous element on the same level of hierarchy
+* `nextSibling` - same as `previousSibling` only for next element
+
+# Attributes
+
+We can also manipulate the attributes
+
+```html
+<p data-classified="secret">The launch code is 00000000.</p>
+<p data-classified="unclassified">I have two feet.</p>
+
+<script>
+  let paras = document.body.getElementsByTagName("p");
+  for (let para of Array.from(paras)) {
+    if (para.getAttribute("data-classified") == "secret") {
+      para.remove();
+    }
+  }
+</script>
+```
+
+# Layout
+
+> For any given document, browsers compute a layout, which gives each element a size and position based on its type and content. This layout is then used to actually draw the document.
+
+Different types of elements render differently. Some are positioned under each other, like `<h1>` and `<h2>`, some, on the same line with their surrounding text. These two types are `block` and `inline` elements.
+
+We can access the size and position of the element with javascript.
+
+`offsetWidth` and `offsetHegiht` will tell how much space element takes in pixels
+
+# Styles
+
+We can give different styles to an element.
+There are multiple ways to do this. One of them is with `style` attribute
+
+```html
+<p id="para" style="color: green">
+    Green Text
+</p>
+```
+However, this is impractical.
+
+# CSS
+
+> CSS (Cascading Style Sheet) is a set of rules for how to style an element.
+
+It can be given inside html document with `style` tag.
+
+```html
+<style>
+  p {
+    font-style: italic;
+    color: gray;
+  }
+</style>
+<p>Now paragraph is italic and gray.</p>
+```
+
+#
+## It is possible to target not only tag names.
+
+For example, rule <p class="fragment grow highlight-red"> `.myClass` </p> applies to every element which has `.myClass` <a class="fragment highlight-gray"> class </a> name. And rule <p class="fragment grow highlight-red"> `#myId` </p> applies to every element having that <a class="fragment highlight-gray"> id </a>.
+
+# Events
+
+> We can actively notify our code what event occurs
+```html
+<p>Click</p>
+<script>
+  window.addEventListener("click", () => {
+    alert("Don't click")
+  });
+</script>
+```
+
+#
+
+```html
+<button>Click me</button>
+<script>
+  let button = document.querySelector("button");
+  button.addEventListener("click", () => {
+    console.log("clicked.");
+  });
+</script>
+```
+
+# Event objects
+
+> Event handler functions are passed an argument: the `event object`.
+
+This object holds additional information about the event
+
+```html
+<button>Click meeeee</button>
+<script>
+    const but = document.querySelector('button')
+    but.addEventListener('mousedown', event => {
+       console.log(event.button)
+    })
+</script>
+```
+
+# Event Propagation
+
+### Usually, when we have nested elements, the events may get mixed up, and transferred from child to parent node.
+This is called `propagation`
+To stop this we can call `stopPropagation()` on our event object
+
+
+Example...
+
+# Default actions
+
+### Many browsers have default actions embedded. E.g holding down arrow will scroll the browser, f11 will transfer it to full screen and so on.
+
+Generally, JS events are called before default browser events. If we don't want default behaviour to happen, we can call `preventDefault()` method.
+
+Example....
